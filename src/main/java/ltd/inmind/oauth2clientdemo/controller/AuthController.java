@@ -18,6 +18,8 @@ public class AuthController {
 
         //用client_id,client_code,code申请access_token
 
+        //关联到系统内部用户
+
         return "";
     }
 
