@@ -7,4 +7,5 @@
 - springboot
 - <del>spring security</del>
 - <del>spring security oauth2</del>
+- feign http client
 - thymeleaf
