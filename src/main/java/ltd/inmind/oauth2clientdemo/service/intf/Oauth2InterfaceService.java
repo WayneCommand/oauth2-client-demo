@@ -1,4 +1,4 @@
-package ltd.inmind.oauth2clientdemo.service;
+package ltd.inmind.oauth2clientdemo.service.intf;
 
 import feign.Headers;
 import feign.Param;

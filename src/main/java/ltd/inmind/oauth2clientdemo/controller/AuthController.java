@@ -5,7 +5,7 @@ import feign.form.FormEncoder;
 import feign.gson.GsonDecoder;
 import feign.okhttp.OkHttpClient;
 import ltd.inmind.oauth2clientdemo.model.AccessTokenResult;
-import ltd.inmind.oauth2clientdemo.service.Oauth2InterfaceService;
+import ltd.inmind.oauth2clientdemo.service.intf.Oauth2InterfaceService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
