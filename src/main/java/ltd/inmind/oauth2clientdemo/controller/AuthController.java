@@ -1,12 +1,9 @@
 package ltd.inmind.oauth2clientdemo.controller;
 
-import feign.Feign;
-import feign.form.FormEncoder;
-import feign.gson.GsonDecoder;
-import feign.okhttp.OkHttpClient;
 import ltd.inmind.oauth2clientdemo.model.AccessTokenResult;
-import ltd.inmind.oauth2clientdemo.service.intf.Oauth2InterfaceService;
-import org.springframework.beans.factory.annotation.Value;
+import ltd.inmind.oauth2clientdemo.service.AuthService;
+import ltd.inmind.oauth2clientdemo.service.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,27 +14,10 @@ import java.io.IOException;
 @RequestMapping("/oauth/2")
 public class AuthController {
 
-    private String CLIENT_ID = "test";
-    private String CLIENT_CODE = "test";
+    @Autowired
+    private AuthService authService;
 
-    @Value("${oauth2.redirect-url}")
-    private String redirectUrl;
-
-    @Value("${oauth2.userservice}")
-    private String userservice;
-
-    private Oauth2InterfaceService interfaceService;
-
-    {
-        interfaceService = Feign.builder()
-                .client(new OkHttpClient())
-                .encoder(new FormEncoder())
-                .decoder(new GsonDecoder())
-                .target(Oauth2InterfaceService.class, userservice);
-    }
-
-
-
+    private LoginService loginService;
 
     @RequestMapping("/redirect")
     public String redirect(String code,HttpServletResponse response) {
@@ -45,32 +25,40 @@ public class AuthController {
         //用户已经在认证服务器通过授权
 
         //用client_id,client_code,code申请access_token
-        AccessTokenResult accessToken = interfaceService.accessToken(CLIENT_ID, CLIENT_CODE, code);
-
-        if (accessToken.getMessage() == null || "".equals(accessToken.getMessage())){
-
-            //TODO 如何和系统内建用户交互
-
-            //登陆
-
-            //跳转
-            try {
-                response.sendRedirect("/");
-            } catch (IOException e) {
-                e.printStackTrace();
-                return e.getMessage();
-            }
-            return "redirect error";
-        }else {
-            return "error :" + accessToken.getMessage();
+        AccessTokenResult result;
+        try {
+            result = authService.userServiceAccessToken(code);
+        } catch (Exception e) {
+            return e.getMessage();
+            //TODO 失败了之后去错误页面
         }
 
+
+        //登陆
+
+        try {
+            loginService.login(result.getAccess_token());
+        } catch (Exception e) {
+            e.printStackTrace();
+            //TODO 失败了之后返回失败信息
+        }
+
+
+        //跳转
+        try {
+            response.sendRedirect("/");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return e.getMessage();
+        }
+
+        return "";
     }
 
     @RequestMapping("/userservice")
     public void userService(HttpServletResponse response){
 
-        String url = String.format("%s/authorize?client_id=%s&redirect_uri=%s/redirect&scope=%s", userservice, CLIENT_ID, redirectUrl, "user info");
+        String url = authService.userServiceRedirectUrl();
 
         System.out.println("userservice  " + "[String.format] :" + url);
 
