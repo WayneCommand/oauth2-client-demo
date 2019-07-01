@@ -1,2 +1,4 @@
 oauth2:
   access-token-url: "http://baidu.com"
+  redirect-url: "http://localhost:8080/oauth/2"
+  userservice: "http://localhost:9090/oauth/2"
