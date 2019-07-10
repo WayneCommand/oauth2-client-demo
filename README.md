@@ -5,6 +5,7 @@
 ## 集成组件
 
 - springboot
+- mybatis-plus
 - <del>spring security</del>
 - <del>spring security oauth2</del>
 - feign http client
