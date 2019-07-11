@@ -1,4 +1,4 @@
-package ltd.inmind.oauth2clientdemo.database_benchmark.entity;
+package ltd.inmind.oauth2clientdemo.database_benchmark.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 

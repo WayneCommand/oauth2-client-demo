@@ -1,4 +1,4 @@
-package ltd.inmind.oauth2clientdemo.dao;
+package ltd.inmind.oauth2clientdemo.mapper;
 
 import ltd.inmind.oauth2clientdemo.model.AuthRecord;
 

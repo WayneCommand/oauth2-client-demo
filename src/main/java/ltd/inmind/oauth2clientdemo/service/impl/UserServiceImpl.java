@@ -1,6 +1,6 @@
 package ltd.inmind.oauth2clientdemo.service.impl;
 
-import ltd.inmind.oauth2clientdemo.dao.UserDao;
+import ltd.inmind.oauth2clientdemo.mapper.UserDao;
 import ltd.inmind.oauth2clientdemo.model.User;
 import ltd.inmind.oauth2clientdemo.service.UserService;
 import org.springframework.stereotype.Service;

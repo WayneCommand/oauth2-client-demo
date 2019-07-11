@@ -1,6 +1,6 @@
 package ltd.inmind.oauth2clientdemo.service.impl;
 
-import ltd.inmind.oauth2clientdemo.dao.AuthRecordDao;
+import ltd.inmind.oauth2clientdemo.mapper.AuthRecordDao;
 import ltd.inmind.oauth2clientdemo.model.AuthRecord;
 import ltd.inmind.oauth2clientdemo.model.User;
 import ltd.inmind.oauth2clientdemo.service.AuthRecordService;

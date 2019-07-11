@@ -40,12 +40,4 @@ public class AuthServiceImpl implements AuthService {
             throw new RuntimeException(accessToken.getMessage());
     }
 
-    {
-        interfaceService = Feign.builder()
-                .client(new OkHttpClient())
-                .encoder(new FormEncoder())
-                .decoder(new GsonDecoder())
-                .target(Oauth2InterfaceService.class, userservice);
-    }
-
 }
