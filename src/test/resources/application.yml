@@ -1,0 +1,28 @@
+# DataSource Config
+spring:
+  profiles:
+    active: sqlite3
+
+oauth2:
+  access-token-url: "http://baidu.com"
+  redirect-url: "http://localhost:8080/oauth/2"
+  userservice: "http://localhost:9090/oauth/2"
+
+---
+
+spring:
+  datasource:
+    url: jdbc:h2:file:~/test
+    username: test
+
+  profiles: h2
+
+
+---
+
+spring:
+  datasource:
+    url: jdbc:sqlite:./test_sqlite.db
+
+  profiles: sqlite3
+
