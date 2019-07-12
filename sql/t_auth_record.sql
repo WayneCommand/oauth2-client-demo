@@ -26,9 +26,10 @@ CREATE TABLE `t_auth_record`  (
   `auth_server_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'oauth2的来源服务名',
   `auth_user_id` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'oauth2来源的用户唯一ID',
   `user_id` int(11) NULL DEFAULT NULL COMMENT '系统内的用户id',
-  `accesss_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `access_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `expired_time` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = Aria CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Page;
+
 
 SET FOREIGN_KEY_CHECKS = 1;
