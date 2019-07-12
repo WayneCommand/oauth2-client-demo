@@ -2,3 +2,13 @@ oauth2:
   access-token-url: "http://baidu.com"
   redirect-url: "http://localhost:8080/oauth/2"
   userservice: "http://localhost:9090/oauth/2"
+
+spring:
+  datasource:
+    url: jdbc:h2:file:./oauth2_client
+    schema: classpath:sql/schema.sql
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      #默认访问路径是/h2-console
+      enabled: true

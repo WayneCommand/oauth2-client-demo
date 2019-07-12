@@ -1,6 +1,6 @@
 package ltd.inmind.oauth2clientdemo.controller;
 
-import ltd.inmind.oauth2clientdemo.model.AccessTokenResult;
+import ltd.inmind.oauth2clientdemo.model.intf.AccessTokenResult;
 import ltd.inmind.oauth2clientdemo.service.AuthService;
 import ltd.inmind.oauth2clientdemo.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +17,7 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    @Autowired
     private LoginService loginService;
 
     @RequestMapping("/redirect")
@@ -40,13 +41,14 @@ public class AuthController {
             loginService.login(result.getAccess_token());
         } catch (Exception e) {
             e.printStackTrace();
+            return e.getMessage();
             //TODO 失败了之后返回失败信息
         }
 
 
-        //跳转
+        //登陆成功跳转
         try {
-            response.sendRedirect("/");
+            response.sendRedirect("/index");
         } catch (IOException e) {
             e.printStackTrace();
             return e.getMessage();

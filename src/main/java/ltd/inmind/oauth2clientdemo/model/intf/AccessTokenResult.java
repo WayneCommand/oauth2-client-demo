@@ -1,4 +1,4 @@
-package ltd.inmind.oauth2clientdemo.model;
+package ltd.inmind.oauth2clientdemo.model.intf;
 
 public class AccessTokenResult {
     private String access_token;

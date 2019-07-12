@@ -1,14 +1,12 @@
 package ltd.inmind.oauth2clientdemo.service.impl;
 
-import feign.Feign;
-import feign.form.FormEncoder;
-import feign.gson.GsonDecoder;
-import feign.okhttp.OkHttpClient;
-import ltd.inmind.oauth2clientdemo.model.AccessTokenResult;
+import ltd.inmind.oauth2clientdemo.model.intf.AccessTokenResult;
 import ltd.inmind.oauth2clientdemo.service.AuthService;
 import ltd.inmind.oauth2clientdemo.service.intf.Oauth2InterfaceService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -40,4 +38,9 @@ public class AuthServiceImpl implements AuthService {
             throw new RuntimeException(accessToken.getMessage());
     }
 
+
+    @PostConstruct
+    public void setInterfaceService() {
+        interfaceService = Oauth2InterfaceService.getInstance(userservice);
+    }
 }

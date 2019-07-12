@@ -1,7 +1,11 @@
 package ltd.inmind.oauth2clientdemo.model;
 
+import com.baomidou.mybatisplus.annotation.*;
+
+@TableName("t_user")
 public class User {
 
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     /**
@@ -38,5 +42,14 @@ public class User {
 
     public void setAtId(String atId) {
         this.atId = atId;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nickname='" + nickname + '\'' +
+                ", atId='" + atId + '\'' +
+                '}';
     }
 }

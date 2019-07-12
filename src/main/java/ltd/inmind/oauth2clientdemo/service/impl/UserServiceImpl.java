@@ -1,18 +1,20 @@
 package ltd.inmind.oauth2clientdemo.service.impl;
 
-import ltd.inmind.oauth2clientdemo.mapper.UserDao;
+import ltd.inmind.oauth2clientdemo.mapper.UserMapper;
 import ltd.inmind.oauth2clientdemo.model.User;
 import ltd.inmind.oauth2clientdemo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao;
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public User findUserById(Integer id) {
-        return userDao.selectById(id);
+        return userMapper.selectById(id);
     }
 
     @Override
@@ -21,7 +23,7 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setNickname(nickname);
 
-        userDao.insert(user);
+        userMapper.insert(user);
 
         return user;
     }
@@ -29,6 +31,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updateUser(User user) {
 
-        return userDao.update(user);
+        return userMapper.updateById(user);
     }
 }
