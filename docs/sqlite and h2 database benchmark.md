@@ -1,7 +1,6 @@
 ## insert
 
-
-| sum |h2 | sqlite |
+| sum | h2(ms) | sqlite(ms) |
 |--|--|--|
 | 100 | 121 | 2719 |
 | 100 | 132 | 2582 |
@@ -18,7 +17,7 @@
 
 ### Sequential 
 
-| sum |h2 | sqlite |
+| sum | h2(ms) | sqlite(ms) |
 |--|--|--|
 | 100 | 109 | 78 |
 | 100 | 104 | 89 |
@@ -29,7 +28,7 @@
 
 ### Random 
 
-| sum |h2 | sqlite |
+| sum | h2(ms) | sqlite(ms) |
 |--|--|--|
 | 50 | 100 | 74 |
 | 50 | 114 | 77 |
@@ -37,4 +36,8 @@
 | 200 | 156 | 85 |
 | 200 | 157 | 95 |
 | 200 | 138 | 89 |
+
+
+## benchmark platform
+surface book 2 (windows 10 1703)
 
